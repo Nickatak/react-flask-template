@@ -2,7 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 
 import { authActions } from '../../redux/actions';
-
+import { apiServices } from '../../services';
 
 /**
  * Login page layout as a component.
@@ -35,6 +35,8 @@ const LoginPage = (props) => {
 
     const _testProtected = async (evt) => {
         evt.preventDefault();
+
+        apiServices.getProtected(user);
 
     }
 

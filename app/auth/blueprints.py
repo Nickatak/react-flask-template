@@ -1,14 +1,10 @@
 """Auth routes."""
-from flask import Blueprint, jsonify, g, request
-from flask_jwt_extended import jwt_required, jwt_refresh_token_required, create_access_token, create_refresh_token, get_jwt_identity
+from flask import Blueprint, jsonify, request
+from flask_jwt_extended import get_raw_jwt, jwt_required, jwt_refresh_token_required, create_access_token, create_refresh_token, get_jwt_identity, verify_jwt_in_request
 
 from app import jwt
 
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
-
-@auth_bp.before_request
-def assign_uid():
-    g.uid = get_jwt_identity()
 
 
 @auth_bp.route('/obtain', methods=['POST'])
@@ -42,5 +38,5 @@ def refresh_pair():
 @auth_bp.route('/protected')
 @jwt_required
 def protected():
-    print("PROTECTED ROUTE ACCESSED BY USER WITH ID OF {}".format(g.uid))
+    print("PROTECTED ROUTE ACCESSED BY USER WITH ID OF {}".format(get_jwt_identity()))
     return jsonify({'working' : 'ok'})

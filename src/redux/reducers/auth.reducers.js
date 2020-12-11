@@ -1,18 +1,19 @@
 
-const user = JSON.parse(localStorage.getItem('user'));
-const initialState = user ? {loggedIn : true, user} : { loggedIn: false, user: null };
+const tokens = JSON.parse(localStorage.getItem('user'));
+const initialState = tokens ? {loggedIn : true, tokens} : { loggedIn: false, tokens: null };
 
 export function authReducer(state = initialState, action) {
     switch (action.type) {
         case 'LOGIN_SUCCEEDED':
+            console.log("ACTION", action)
             return {
                 loggedIn : true,
-                user: action.payload,
+                tokens: action.payload,
             };
         case 'LOGIN_FAILED':
-            return { loggedIn: false, user: null };
+            return { loggedIn: false, tokens: null };
         case 'LOGOUT':
-            return { loggedIn: false, user: null };
+            return { loggedIn: false, tokens: null };
 
         default:
             return state;

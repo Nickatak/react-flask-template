@@ -1,3 +1,22 @@
+/**
+ * Helpers for request-specific actions (getting headers/handling response).
+ */
+
+const getHeaders = (user) => {
+
+    const headers = {
+        'Content-Type': 'application/json'
+    }
+
+    if (user && user.loggedIn) {
+        headers['Authorization'] = `Bearer ${user.tokens.access}`
+    }
+
+
+   return headers;
+}
+
+
 
 const handleResponse = (response) => {
 
@@ -20,5 +39,6 @@ const handleResponse = (response) => {
 }
 
 export {
+    getHeaders,
     handleResponse,
 }

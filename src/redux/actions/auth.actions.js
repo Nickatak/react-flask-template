@@ -18,7 +18,7 @@ const login = (username, password) => {
     return (dispatch) => {
         authServices.login(username, password)
         .then((user) => {
-            console.log("WORKING", user)
+            console.log("working in actions?")
             dispatch(success(user));
         },
         (error) => {
@@ -27,6 +27,14 @@ const login = (username, password) => {
     }
 }
 
+const logout = () => {
+    return (dispatch) => {
+        dispatch({type: 'LOGOUT'});
+    }
+}
+
+
 export {
+    logout,
     login,
 }
