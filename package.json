@@ -10,6 +10,7 @@
     "npm-watch": "^0.7.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
@@ -28,10 +29,11 @@
     }
   },
   "scripts": {
+    "start": "react-scripts start",
     "watch": "npm-watch",
     "build": "react-scripts build",
     "copy": "npm run copy:static && npm run copy:template && npm run copy:other",
-    "copy:static" : "copyfiles -u 2 \"build/static/**/*\" static",
+    "copy:static": "copyfiles -u 2 \"build/static/**/*\" static",
     "copy:template": "copyfiles -u 1 build/*.html templates",
     "copy:other": "copyfiles -u 1 build/*.png build/*.ico build/*.json build/*.txt static"
   },
