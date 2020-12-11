@@ -1,3 +1,4 @@
+import { authActions } from '.';
 import { authServices } from '../../services';
 
 const login = (username, password) => {
@@ -18,7 +19,6 @@ const login = (username, password) => {
     return (dispatch) => {
         authServices.login(username, password)
         .then((user) => {
-            console.log("working in actions?")
             dispatch(success(user));
         },
         (error) => {
@@ -28,6 +28,8 @@ const login = (username, password) => {
 }
 
 const logout = () => {
+
+    authServices.logout();
     return (dispatch) => {
         dispatch({type: 'LOGOUT'});
     }

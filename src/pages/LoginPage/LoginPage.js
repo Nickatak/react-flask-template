@@ -42,12 +42,11 @@ const LoginPage = (props) => {
 
     const _testRefresh = async (evt) => {
         evt.preventDefault();
-
     }
 
     const _testLogout = async (evt) => {
         evt.preventDefault();
-
+        dispatch(authActions.logout());
     }
 
     const _viewState = async (evt) => {

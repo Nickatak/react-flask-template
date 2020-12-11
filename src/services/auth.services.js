@@ -1,5 +1,4 @@
 import { requestHelpers } from '../helpers';
-import { authActions } from '../redux/actions';
 
 const login = async (username, password) => {
 
@@ -22,9 +21,6 @@ const login = async (username, password) => {
 const logout = async () => {
     // Clear localStorage.
     localStorage.removeItem('user');
-
-    // Fire the logout action to clear the redux state.
-    authActions.logout('');
 }
 
 
