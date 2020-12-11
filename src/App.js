@@ -4,12 +4,19 @@ import {
     Switch,
     Route
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
+
+
+import makeStore from'./redux/store';
 
 import LoginPage from './pages/LoginPage';
 
+/**
+ * Top-level component called directly by ReactDOM.render().
+ */
 const App = () => {
     return (
-        <div className="App">
+        <Provider store={makeStore()}>
             <BrowserRouter>
                 <Switch>
                     <Route path='/'>
@@ -17,7 +24,8 @@ const App = () => {
                     </Route>
                 </Switch>
             </BrowserRouter>
-        </div>
+        </Provider>
+
     )
 }
 

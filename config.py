@@ -15,6 +15,8 @@ class DevConfig(object):
     TEMPLATE_DIR = BASE_DIR.joinpath('templates')
     SECRET_KEY = os.urandom(24)
 
+    JWT_SECRET_KEY = '.....'
+
 
 class TestConfig(DevConfig):
     TESTING = True

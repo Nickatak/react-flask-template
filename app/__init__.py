@@ -1,10 +1,11 @@
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
+from flask_jwt_extended import JWTManager
 
 from config import DevConfig
 
 db = SQLAlchemy()
-
+jwt = JWTManager()
 
 def create_app(conf_obj=DevConfig):
     app = Flask(__name__,
@@ -17,6 +18,7 @@ def create_app(conf_obj=DevConfig):
     # Initialize application context to "globals".
     # r.init_app(app)
     db.init_app(app)
+    jwt.init_app(app)
 
     # Register blueprints.
     from app import auth
